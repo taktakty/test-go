@@ -1,0 +1,77 @@
+Step: build-step-credential-initializer-kzlrp:
+
+{"level":"warn","ts":1555937734.030018,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1555937734.0313072,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-********-test-go-2-master-sbnjk:
+
+{"level":"warn","ts":1555937735.2435546,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1555937736.2827122,"logger":"fallback-logger","caller":"git-init/main.go:99","msg":"Successfully cloned \"https://github.com/********/test-go-2\" @ \"v0.0.1\" in path \"/workspace/source\""}
+Step: build-step-place-tools:
+
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
+time="2019-04-22T12:55:38Z" level=info msg="got "
+Using SHAs from PULL_REFS=master:
+time="2019-04-22T12:55:38Z" level=warning msg="no SHAs to merge, falling back to initial cloned commit"
+Step: build-step-setup-**-git-credentials:
+
+{"level":"info","msg":"Generated Git credentials file /workspace/xdg_config/git/credentials\n","time":"2019-04-22T12:55:39Z"}
+Step: build-step-build-make-build:
+
+CGO_ENABLED=0 GO15VENDOREXPERIMENT=1 go build -ldflags '' -o bin/test-go-2 main.go
+Step: build-step-build-container-build:
+
+[36mINFO[0m[0000] No base image, nothing to extract            
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0000] Taking snapshot of full filesystem...        
+[36mINFO[0m[0000] EXPOSE 8080                                  
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0000] ENTRYPOINT ["/test-go-2"]                    
+[36mINFO[0m[0000] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] COPY ./bin/ /                                
+[36mINFO[0m[0000] Taking snapshot of files...                  
+2019/04/22 12:55:43 pushed blob: sha256:b9117ad3bc3a7cdffee90b762b049edf68be583a7ede12498ebeb0f97d5a1dd4
+2019/04/22 12:55:44 pushed blob: sha256:f6cf5126badcca2f6b4ae34ac7fae963cd2f5e1cedad4374b1dc5cd0fa4ba80b
+2019/04/22 12:55:44 10.100.186.71:5000/********/test-go-2:0.0.1: digest: sha256:458ea8ae349dd6966b2c7e30ca79149d7a39eecbc4144d264a592c9d63045d22 size: 428
+Step: build-step-build-post-build:
+
+{"level":"info","msg":"no CVE provider running in the current ** namespace so skip adding image to be analysed","time":"2019-04-22T12:55:44Z"}
+Step: build-step-promote-changelog:
+
+{"level":"info","msg":"Converted /workspace/source/charts/test-go-2 to an unshallow repository\n","time":"2019-04-22T12:55:47Z"}
+{"level":"info","msg":"Generating change log from git ref 2df4d508afeacf78a37f000ba6baf127497210c0 =\u003e a47bfbe631367a5d070158ebeba71ff41a9781dd\n","time":"2019-04-22T12:55:47Z"}
+{"level":"warning","msg":"Failed to enrich commits with issues: User.jenkins.io \"\" is invalid: metadata.name: Required value: name or generateName is required\n","time":"2019-04-22T12:55:47Z"}
+{"level":"warning","msg":"Failed to enrich commits with issues: User.jenkins.io \"\" is invalid: metadata.name: Required value: name or generateName is required\n","time":"2019-04-22T12:55:47Z"}
+{"level":"info","msg":"Finding issues in commit messages using git format\n","time":"2019-04-22T12:55:47Z"}
+{"level":"warning","msg":"No release found for ********/test-go-2 and tag v0.0.1 so creating a new release\n","time":"2019-04-22T12:55:48Z"}
+{"level":"info","msg":"Updated the release information at https://github.com/********/test-go-2/releases/tag/v0.0.1\n","time":"2019-04-22T12:55:48Z"}
+{"level":"info","msg":"generated: /workspace/source/charts/test-go-2/templates/release.yaml\n","time":"2019-04-22T12:55:48Z"}
+{"level":"info","msg":"Created Release test-go-2-0-0-1 resource in namespace **\n","time":"2019-04-22T12:55:48Z"}
+{"level":"info","msg":"Updating PipelineActivity ********-test-go-2-master-1 with version 0.0.1\n","time":"2019-04-22T12:55:48Z"}
+{"level":"info","msg":"Updated PipelineActivities ********-test-go-2-master-1 with release notes URL: https://github.com/********/test-go-2/releases/tag/v0.0.1\n","time":"2019-04-22T12:55:49Z"}
+Step: build-step-promote-helm-release:
+
+{"level":"warning","msg":"No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080\n","time":"2019-04-22T12:55:50Z"}
+{"level":"info","msg":"Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io\n","time":"2019-04-22T12:55:54Z"}
+{"level":"info","msg":"Successfully added Helm repository chartmuseum.jenkins-x.io.\n","time":"2019-04-22T12:55:57Z"}
+{"level":"info","msg":"Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080\n","time":"2019-04-22T12:55:57Z"}
+{"level":"info","msg":"Successfully added Helm repository jenkins-x-chartmuseum.\n","time":"2019-04-22T12:55:57Z"}
+{"level":"warning","msg":"No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080\n","time":"2019-04-22T12:55:57Z"}
+{"level":"info","msg":"Uploading chart file test-go-2-0.0.1.tgz to http://jenkins-x-chartmuseum:8080/api/charts\n","time":"2019-04-22T12:55:57Z"}
+{"level":"info","msg":"Received 201 response: {\"saved\":true}\n","time":"2019-04-22T12:55:57Z"}
+Step: build-step-promote-**-promote:
+
+{"level":"warning","msg":"prow based install so skip waiting for the merge of Pull Requests to go green as currently there is an issue with gettingstatuses from the PR, see https://github.com/jenkins-x/**/issues/2410","time":"2019-04-22T12:55:58Z"}
+{"level":"info","msg":"Promoting app test-go-2 version 0.0.1 to namespace **-staging\n","time":"2019-04-22T12:55:58Z"}
+{"level":"info","msg":"Created Pull Request: https://github.com/********/environment-otterpond-staging/pull/3\n\n","time":"2019-04-22T12:56:06Z"}
+{"level":"warning","msg":"Failed to query the Pull Request last commit status for https://github.com/********/environment-otterpond-staging/pull/3 ref b3962ac695ed1865794c2147b5ef719916079e1f Could not find a status for repository ********/environment-otterpond-staging with ref b3962ac695ed1865794c2147b5ef719916079e1f\n","time":"2019-04-22T12:56:10Z"}
+{"level":"info","msg":"Pull Request https://github.com/********/environment-otterpond-staging/pull/3 is merged at sha 7d5ac73c5243798f42eaa58fd7e4aac255139777\n","time":"2019-04-22T12:56:30Z"}
+{"level":"info","msg":"Pull Request merged but we are not waiting for the update pipeline to complete!","time":"2019-04-22T12:56:30Z"}
+{"level":"warning","msg":"Could not find the service URL in namespace **-staging for names test-go-2, **-test-go-2, **-staging-test-go-2\n","time":"2019-04-22T12:56:30Z"}
